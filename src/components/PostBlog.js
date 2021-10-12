@@ -1,4 +1,5 @@
-import React from 'react';
+import {React, useEffect, useState, textarea} from 'react';
+import axios from 'axios';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import Button from 'react-bootstrap/Button'
@@ -6,26 +7,60 @@ import { Form } from 'react-bootstrap';
 
 export default function PostBlog() {
   // const [html, setHtml] = React.useState('my <b>HTML</b>');
+  const [blogContent, setBlogContent] = useState([]);
+  const [blogTitle, setBlogTitle] = useState([]);
+  const [editorInstance, setEditorInstance] = useState([]);
 
-  // function onChange(e) {
-  //   setHtml(e.target.value);
-  // }
-  
-  function handleClick(){
-      console.log("Handle Click");
+  function trimString(string){
+      return string.substring(1).slice(0,-1)
   }
-  var editorInstance;
+
+  function handleClick(data){
+      alert("Data inside handle" + data);
+      let dataString = JSON.stringify(data);
+      dataString = trimString(dataString);
+    //   let title = trimString(blogTitle);
+      const res = axios.post('http://localhost:9001/v1/blogs/author/u001', 
+      {
+        "blogTitle": JSON.stringify(blogTitle),
+        "blogCreationDate": "2021-10-12",
+        "blogText": dataString,
+        "blogTags": [
+            "psychology",
+            "behaviour"
+        ]
+    })
+      .then(
+        res => {
+            console.log(res);
+        }
+      ).catch(
+          err => console.log(err)
+      );
+  }
+
+  const divStyle = {
+    height: 1000,
+    
+  };
+//   var editorInstance;
 
   return (
-    <div className="editor">
-        <h2>Using CKEditor 5 build in React</h2>
+    <div style={divStyle} className="editor">
+        <h2>Post a Blog</h2>
         <Form onSubmit={() => {alert("Wow")}}>
+        <input
+        type="text"
+        value={blogTitle}
+        onChange={e => setBlogTitle(e.target.value)}
+        placeholder="Enter blog title"
+      />
         <CKEditor
             editor={ ClassicEditor }
-            data="<p>Hello from CKEditor 5!</p>"
+            data=""
             onReady={ editor => {
                 // You can store the "editor" and use when it is needed.
-                editorInstance = editor;
+                setEditorInstance(editor);
                 console.log( 'Editor is ready to use!', editor );
             } }
             onChange={ ( event, editor ) => {
@@ -50,9 +85,9 @@ export default function PostBlog() {
       
       onClick={() => { 
         
-        const editorData = editorInstance.getData();      
-        alert("The data is " + editorData) ;
-    
+        const editorData = editorInstance.getData(); 
+        handleClick(editorData);     
+        
     }}
     >
       Post Blog
@@ -64,4 +99,5 @@ export default function PostBlog() {
     </div>
     
 );
+
 }

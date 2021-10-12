@@ -8,6 +8,6 @@ import PostBlog from './components/PostBlog';
 
 
 ReactDOM.render(<React.StrictMode>
-  {/* <BlogsByAuthor authorId={'u002'}/> */}
-  <PostBlog />
+  <BlogsByAuthor authorId={'u001'}/>
+  {/* <PostBlog /> */}
                 </React.StrictMode>, document.getElementById('root'));

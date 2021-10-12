@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import parse from 'html-react-parser';
 import axios from 'axios';
 import {
   Container, Card,
@@ -22,12 +23,19 @@ function Blog(props) {
     });
   }, []);
 
+  function trimString(string){
+    return string.substring(1).slice(0,-1)
+  }
   return (
     <div className="App">
       <Container fluid>
-        <h1>{blogTitle}</h1>
+        <h1>
+        {parse(trimString({blogTitle}.blogTitle.toString()))}
+        </h1>
         <Card>
-          <Card.Body>{blogText}</Card.Body>
+          <Card.Body>
+            {parse({blogText}.blogText.toString())}
+          </Card.Body>
         </Card>
       </Container>
     </div>
