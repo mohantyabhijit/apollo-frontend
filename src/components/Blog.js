@@ -11,6 +11,7 @@ function Blog(props) {
   const blogUrl = baseUrl.concat(props.blogId);
   const [blogTitle, setBlogTitle] = useState([]);
   const [blogText, setBlogText] = useState([]);
+  
   useEffect(() => {
     axios.get(blogUrl).then((res) => {
       setBlogTitle(res.data.blogTitle);
@@ -26,19 +27,29 @@ function Blog(props) {
   function trimString(string){
     return string.substring(1).slice(0,-1)
   }
+
+  const divStyle = {
+    marginTop: "5"
+  }
+
   return (
-    <div className="App">
-      <Container fluid>
-        <h1>
-        {parse(trimString({blogTitle}.blogTitle.toString()))}
-        </h1>
-        <Card>
-          <Card.Body>
-            {parse({blogText}.blogText.toString())}
-          </Card.Body>
-        </Card>
-      </Container>
+    <div style={{marginTop: 20}}>
+      <div className="App">
+      <div style={{margin: 30}}>
+        <Container fluid >
+          <h1>
+          {parse(trimString({blogTitle}.blogTitle.toString()))}
+          </h1>
+          <Card style={{margin: 5}}>
+            <Card.Body>
+              {parse({blogText}.blogText.toString())}
+            </Card.Body>
+          </Card>
+        </Container>
+      </div>
     </div>
+    </div>
+    
   );
 }
 

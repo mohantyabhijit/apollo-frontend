@@ -4,7 +4,7 @@ import BlogsByAuthor from "../components/BlogsByAuthor";
 export default function MyBlogs() {
   return (
     <div className="Home">
-      <BlogsByAuthor/>
+      <BlogsByAuthor authorId={"u001"}/>
     </div>
   );
 }

@@ -18,9 +18,9 @@ function App() {
         <Navbar.Collapse className="justify-content-end">
           <Nav activeKey={window.location.pathname}>
             <LinkContainer to="/MyBlogs">
-              <Nav.Link>Blogs by Me</Nav.Link>
+              <Nav.Link>Your Blogs</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/login">
+            <LinkContainer to="/PostBlogs">
               <Nav.Link>Post Blogs</Nav.Link>
             </LinkContainer>
           </Nav>
