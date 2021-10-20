@@ -8,6 +8,7 @@ import { Form } from 'react-bootstrap';
 export default function PostBlog() {
   const [blogContent, setBlogContent] = useState([]);
   const [blogTitle, setBlogTitle] = useState([]);
+  const [blogTags, setBlogTags] = useState([]);
   const [editorInstance, setEditorInstance] = useState([]);
 
   function trimString(string){
@@ -17,15 +18,14 @@ export default function PostBlog() {
   function handleClick(data){
       let dataString = JSON.stringify(data);
       dataString = trimString(dataString);
+      console.log(blogTags);
+      var tags = blogTags.split(',');
       const res = axios.post('http://localhost:9001/v1/blogs/author/u001', 
       {
         "blogTitle": JSON.stringify(blogTitle),
         "blogCreationDate": "2021-10-12",
         "blogText": dataString,
-        "blogTags": [
-            "psychology",
-            "behaviour"
-        ]
+        "blogTags": tags
     })
       .then(
         res => {
@@ -45,10 +45,12 @@ export default function PostBlog() {
         <input
         type="text"
         value={blogTitle}
+        style={{marginBottom: 10}}
         onChange={e => setBlogTitle(e.target.value)}
         placeholder="Enter blog title"
       />
-        <CKEditor
+      {/* <div style={{marginTop: 10, height: 10}}> */}
+      <CKEditor
             editor={ ClassicEditor }
             data=""
             onReady={ editor => {
@@ -62,8 +64,20 @@ export default function PostBlog() {
                 
             } }            
         />
+      {/* </div> */}
+        
+        
+        <input
+        type="text"
+        value={blogTags}
+        style={{marginTop: 10}}
+        onChange={e => setBlogTags(e.target.value)}
+        placeholder="Enter blog tags"
+      />
+
         <Button
             variant="primary"
+            style={{marginLeft: 910, width: 200}}
             onClick={() => { 
                 const editorData = editorInstance.getData(); 
                 handleClick(editorData);     
