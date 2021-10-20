@@ -19,12 +19,12 @@ function Questions(props) {
 //   const [blogTitle, setBlogTitle] = useState([]);
 //   const [blogText, setBlogText] = useState([]);
   
-  useEffect(() => {
-    axios.get(baseUrl,{ crossdomain: true }).then((res) => {
-        console.log(res);
-    //   setBlogTitle(res.data.blogTitle);
-    });
-  }, []);
+//   useEffect(() => {
+//     axios.get(baseUrl,{ crossdomain: true }).then((res) => {
+//         console.log(res);
+//     //   setBlogTitle(res.data.blogTitle);
+//     });
+//   }, []);
 
 //   useEffect(() => {
 //     axios.get(blogUrl).then((res) => {
