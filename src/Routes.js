@@ -5,6 +5,8 @@ import MyBlogs from "./containers/MyBlogs";
 import BlogsByAuthor  from "./components/BlogsByAuthor";
 import PostBlog from "./components/PostBlog";
 import Questions from "./components/Questions";
+import AllBlogs from "./components/AllBlogs";
+import AllBlogsContainer from "./containers/AllBlogsContainer";
 
 export default function Routes() {
   return (
@@ -20,6 +22,9 @@ export default function Routes() {
       </Route>
       <Route path="/AllQuestions" component={Questions}>
         <Questions/>
+      </Route>
+      <Route path="/AllBlogsContainer" component={AllBlogs}>
+        <AllBlogs/>
       </Route>
     </Switch>
   );

@@ -26,6 +26,9 @@ function App() {
             <LinkContainer to="/PostBlogs">
               <Nav.Link>Post Blogs</Nav.Link>
             </LinkContainer>
+            {/* <LinkContainer to="/AllBlogsContainer">
+              <Nav.Link>All Blogs</Nav.Link>
+            </LinkContainer> */}
           </Nav>
         </Navbar.Collapse>
       </Navbar>

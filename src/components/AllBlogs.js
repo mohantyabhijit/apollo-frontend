@@ -5,16 +5,22 @@ import {
 } from 'react-bootstrap';
 import Blog from './Blog';
 
-function BlogsByAuthor(props) {
-  const baseUrl = 'http://localhost:9001/v1/blogs/author/';
+function AllBlogs(props) {
+  const baseUrl = 'http://ac2119af8234b4bea99404b4db4c497a-122671401.ap-southeast-1.elb.amazonaws.com:9001/v1/blogs/all';
   const author = props.authorId;
   const authorUrl = baseUrl.concat(author);
-  const [blogIds, setBlogIds] = useState([]);
+  const [allBlogData, setAllBlogData] = useState([]);
   useEffect(() => {
-    axios.get(authorUrl).then((res) => {
-      setBlogIds(res.data);
+    axios.get(baseUrl).then((res) => {
+        setAllBlogData(res.data)
     });
   }, []);
+  console.log(allBlogData[0]);
+  let blogIds = [];
+  {allBlogData.map((localState, index) => (
+    blogIds.push(localState.blogId)
+  ))}
+  console.log(blogIds);
   return (
     <div className="App">
       <Container fluid>
@@ -28,4 +34,4 @@ function BlogsByAuthor(props) {
   );
 }
 
-export default BlogsByAuthor;
+export default AllBlogs;
