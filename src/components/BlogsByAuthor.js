@@ -9,7 +9,6 @@ function BlogsByAuthor(props) {
   const baseUrl = 'http://localhost:9001/v1/blogs/author/';
   const author = props.authorId;
   const authorUrl = baseUrl.concat(author);
-  console.log(authorUrl);
   const [blogIds, setBlogIds] = useState([]);
   useEffect(() => {
     axios.get(authorUrl).then((res) => {
