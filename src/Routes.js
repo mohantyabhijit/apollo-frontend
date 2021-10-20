@@ -4,6 +4,7 @@ import Home from "./containers/Home";
 import MyBlogs from "./containers/MyBlogs";
 import BlogsByAuthor  from "./components/BlogsByAuthor";
 import PostBlog from "./components/PostBlog";
+import Questions from "./components/Questions";
 
 export default function Routes() {
   return (
@@ -16,6 +17,9 @@ export default function Routes() {
       </Route>
       <Route path="/PostBlogs" component={PostBlog}>
         <PostBlog/>
+      </Route>
+      <Route path="/AllQuestions" component={Questions}>
+        <Questions/>
       </Route>
     </Switch>
   );
