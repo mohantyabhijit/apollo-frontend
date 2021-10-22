@@ -6,7 +6,7 @@ import {
 import Blog from './Blog';
 
 function BlogsByAuthor(props) {
-  const baseUrl = 'http://localhost:9001/v1/blogs/author/';
+  const baseUrl = ' https://gxhbmsl9v0.execute-api.ap-southeast-1.amazonaws.com/prod/v1/blogs/author/';
   const author = props.authorId;
   const authorUrl = baseUrl.concat(author);
   const [blogIds, setBlogIds] = useState([]);

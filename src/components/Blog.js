@@ -7,7 +7,7 @@ import {
 } from 'react-bootstrap';
 
 function Blog(props) {
-  const baseUrl = 'http://localhost:9001/v1/blogs/blog/';
+  const baseUrl = ' https://gxhbmsl9v0.execute-api.ap-southeast-1.amazonaws.com/prod/v1/blogs/blog/';
   const blogUrl = baseUrl.concat(props.blogId);
   const [blogTitle, setBlogTitle] = useState([]);
   const [blogText, setBlogText] = useState([]);
@@ -38,7 +38,8 @@ function Blog(props) {
       <div style={{margin: 30}}>
         <Container fluid >
           <h1>
-          {parse(trimString({blogTitle}.blogTitle.toString()))}
+          {parse({blogTitle}.blogTitle.toString())}
+          {/* {parse(trimString({blogTitle}.blogTitle.toString()))} */}
           </h1>
           <Card style={{margin: 5}}>
             <Card.Body>
