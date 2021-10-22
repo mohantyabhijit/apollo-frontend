@@ -4,11 +4,11 @@ import AllBlogs from "../components/AllBlogs";
 export default function Home() {
   return (
     <div className="Home">
-      {/* <div className="lander">
+      <div className="lander">
         <h1>Apollo</h1>
         <p className="text-muted">Community learning made easy.</p>
-      </div> */}
-      <AllBlogs/>
+      </div>
+      {/* <AllBlogs/> */}
     </div>
   );
 }

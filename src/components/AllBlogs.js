@@ -15,14 +15,12 @@ function AllBlogs(props) {
         setAllBlogData(res.data)
     });
   }, []);
-  console.log(allBlogData[0]);
   let blogIds = [];
   {allBlogData.map((localState, index) => (
     blogIds.push(localState.blogId)
   ))}
-  console.log(blogIds);
   return (
-    <div className="App">
+    <div className="App" style={{marginTop: 50}}>
       <Container fluid>
         {blogIds.map((c) => (
           <Card style={{marginTop:20}}>

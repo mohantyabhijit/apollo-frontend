@@ -7,6 +7,8 @@ import PostBlog from "./components/PostBlog";
 import Questions from "./components/Questions";
 import AllBlogs from "./components/AllBlogs";
 import AllBlogsContainer from "./containers/AllBlogsContainer";
+import Tags from "./components/Tags";
+import TagsContainer from "./containers/TagsContainer";
 
 export default function Routes() {
   return (
@@ -25,6 +27,9 @@ export default function Routes() {
       </Route>
       <Route path="/AllBlogsContainer" component={AllBlogs}>
         <AllBlogs/>
+      </Route>
+      <Route path="/TagsContainer" component={Tags}>
+        <Tags/>
       </Route>
     </Switch>
   );

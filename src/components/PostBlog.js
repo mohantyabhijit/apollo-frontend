@@ -18,7 +18,6 @@ export default function PostBlog() {
   function handleClick(data){
       let dataString = JSON.stringify(data);
       dataString = trimString(dataString);
-      console.log(blogTags);
       var tags = blogTags.split(',');
       const res = axios.post('https://gxhbmsl9v0.execute-api.ap-southeast-1.amazonaws.com/prod/v1/blogs/author/u001', 
       {
@@ -29,7 +28,6 @@ export default function PostBlog() {
     })
       .then(
         res => {
-            console.log(res);
             alert("Blog Posted");
             window.location.reload(false);
         }
