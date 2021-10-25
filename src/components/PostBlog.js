@@ -22,7 +22,7 @@ export default function PostBlog() {
       const res = axios.post('https://gxhbmsl9v0.execute-api.ap-southeast-1.amazonaws.com/prod/v1/blogs/author/u001', 
       {
         "blogTitle": JSON.stringify(blogTitle),
-        "blogCreationDate": "2021-10-12",
+        "blogCreationDate": "2021-10-27",
         "blogText": dataString,
         "blogTags": tags
     })

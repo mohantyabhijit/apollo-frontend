@@ -38,8 +38,8 @@ function Blog(props) {
       <div style={{margin: 30}}>
         <Container fluid >
           <h1>
-          {parse({blogTitle}.blogTitle.toString())}
-          {/* {parse(trimString({blogTitle}.blogTitle.toString()))} */}
+          {/* {parse({blogTitle}.blogTitle.toString())} */}
+          {parse(trimString({blogTitle}.blogTitle.toString()))}
           </h1>
           <Card style={{margin: 5}}>
             <Card.Body>
