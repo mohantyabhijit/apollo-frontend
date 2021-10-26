@@ -9,8 +9,8 @@ function Search(props) {
                 <div className="App">
                   <Container fluid>
                     {props.results.length > 0 && props.results.map((c) => (
-                      <Card style={{marginTop:20}}>
-                        <Blog key={c} blogId={c.id} />
+                      <Card key={c} style={{marginTop:20}}>
+                        <Blog blogId={c.id} />
                       </Card>
                     ))}
                   </Container>

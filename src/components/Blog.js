@@ -7,20 +7,25 @@ import {
 } from 'react-bootstrap';
 
 function Blog(props) {
-  const baseUrl = ' https://gxhbmsl9v0.execute-api.ap-southeast-1.amazonaws.com/prod/v1/blogs/blog/';
+  const baseUrl = 'https://gxhbmsl9v0.execute-api.ap-southeast-1.amazonaws.com/prod/v1/blogs/blog/';
+  console.log(props.blogId);
   const blogUrl = baseUrl.concat(props.blogId);
   const [blogTitle, setBlogTitle] = useState([]);
   const [blogText, setBlogText] = useState([]);
   
   useEffect(() => {
     axios.get(blogUrl).then((res) => {
-      setBlogTitle(res.data.blogTitle);
+      if (res != undefined){
+        setBlogTitle(res.data.blogTitle);
+      }
     });
   }, []);
 
   useEffect(() => {
     axios.get(blogUrl).then((res) => {
-      setBlogText(res.data.blogText);
+      if (res != undefined){
+        setBlogText(res.data.blogText);
+      }
     });
   }, []);
 
@@ -31,27 +36,28 @@ function Blog(props) {
   const divStyle = {
     marginTop: "5"
   }
-
-  return (
-    <div style={{marginTop: 20}}>
-      <div className="App">
-      <div style={{margin: 30}}>
-        <Container fluid >
-          <h1>
-          {/* {parse({blogTitle}.blogTitle.toString())} */}
-          {parse(trimString({blogTitle}.blogTitle.toString()))}
-          </h1>
-          <Card style={{margin: 5}}>
-            <Card.Body>
-              {parse({blogText}.blogText.toString())}
-            </Card.Body>
-          </Card>
-        </Container>
+  if (blogTitle != undefined){
+    return (
+      <div style={{marginTop: 20}}>
+        <div className="App">
+        <div style={{margin: 30}}>
+          <Container fluid >
+            <h1>
+            {parse(trimString({blogTitle}.blogTitle.toString()))}
+            </h1>
+            <Card style={{margin: 5}}>
+              <Card.Body>
+                {parse({blogText}.blogText.toString())}
+              </Card.Body>
+            </Card>
+          </Container>
+        </div>
       </div>
-    </div>
-    </div>
-    
-  );
+      </div>
+      
+    );
+  } else return <div></div>;
+  
 }
 
 Blog.propTypes = {
